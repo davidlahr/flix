@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_movie
   
   def index
-    @movie = Movie.find(params[:movie_id])
+    @movie = Movie.find_by!(slug: params[:movie_id])
     @reviews = @movie.reviews    
   end
 
