@@ -1,0 +1,35 @@
+
+<% @movies.each do |movie|%>
+    <section class="movie">
+
+        <div class="image">
+            <%= image_tag movie.image_file_name %>
+        </div>
+
+        <div class="summary">
+            <h2><%= link_to movie.name, movie_path(movie)%></h2>
+                <h3>
+                    Gross Box Office: <%= total_gross(movie)%>
+                </h3>
+            <p>
+                Release Date: <%= nice_date(movie) %>
+            </p>
+            <p> Duration: <%= movie.duration %> </p>
+            <div>
+                <!--Rating: <%#= render "shared/stars", percent: review.stars_as_percent %>-->
+                <%#= review.stars %>
+            </div>
+
+            <p>
+                <%= truncate(movie.description, length: 55, separator: ' ')%>
+            </p>
+        </div>
+    </section>
+
+<% end %>
+
+<% if is_admin? %>
+    <section class= "admin">
+        <%= link_to "New Movie", new_movie_path, class: "button"%>
+    </section>
+<% end%>
