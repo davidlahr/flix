@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # user = User.where(email: "davidlahr@yahoo.com").first_or_initialize
-user.create!(
+User.create!(
     email: "davidlahr@yahoo.com",
     name: "David Lahr",
     password_digest: "password",
