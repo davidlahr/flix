@@ -11,7 +11,7 @@ user.create!(
     email: "davidlahr@yahoo.com",
     name: "David Lahr",
     password_digest: "password",
-    admin: :true
+    admin: true
     )
 
 # Movie.create!([
