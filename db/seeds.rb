@@ -8,9 +8,9 @@
 
 # user = User.where(email: "davidlahr@yahoo.com").first_or_initialize
 User.create!(
-    email: "david@example.com",
-    name: "David Lahr",
-    password_digest: "password",
+    email: "larry@example.com",
+    name: "Larry",
+    password: "password",
     admin: true
     )
 
