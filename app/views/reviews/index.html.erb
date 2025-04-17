@@ -3,9 +3,9 @@
     <% @reviews.each do |r| %>
         <li> <%= link_to r.user.name, r.user %> &bull; <%=r.stars %> stars &bull; <%=r.comment %></li>
         <li><%= render "shared/stars", percent: r.stars_as_percent %> </li>
-   
-        <li><%= button_to "Delete",{controller: :reviews, action: 'destroy', id:r }, method: :delete %></li>
-
+        <% if is_admin? || r.user==current_user %>
+            <li><%= button_to "Delete",{controller: :reviews, action: 'destroy', id:r }, method: :delete %></li>
+        <% end %>
 
     <% end %>
 <br>
