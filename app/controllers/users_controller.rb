@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show, :edit, :update, :destroy]
   before_action :require_signin, except:[:new, :create]
-  before_action :require_correct_user, only:[:edit, :update]
+  before_action :is_user_or_admin, only:[:edit, :update]
   before_action :require_admin, only:[:destroy]
 
   def require_signin
@@ -60,6 +60,11 @@ class UsersController < ApplicationController
 
   def require_correct_user
     redirect_to movies_url unless current_user?(@user)
+  end
+
+  def is_user_or_admin
+    
+    redirect_to movies_url unless current_user?(@user) || current_user.admin == true
   end
 
   def user_params
