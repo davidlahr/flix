@@ -7,12 +7,35 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # user = User.where(email: "davidlahr@yahoo.com").first_or_initialize
-User.create!(
-    email: "larry@example.com",
-    name: "Larry",
-    password: "password",
-    admin: true
-    )
+
+
+# User.create!(
+#     email: "larry@example.com",
+#     name: "Larry",
+#     password: "password",
+#     admin: true
+#     )
+#     
+#
+[
+#   ["Avengers: Endgame", "avengers-end-game.png"],
+#   ["Captain Marvel", "captain-marvel.png"],
+#   ["Black Panther", "black-panther.png"],
+#   ["Avengers: Infinity War", "avengers-infinity-war.png"],
+#   ["Green Lantern", "green-lantern.png"],
+  ["Fantastic Four", "fantastic-four.png"],
+#   ["Iron Man", "ironman.png"],
+#   ["Superman", "superman.png"],
+  ["Spider-Man", "spiderman.png"],
+  ["Batman", "batman.png"],
+  ["Catwoman", "catwoman.png"],
+  ["Wonder Woman", "wonder-woman.png"]
+].each do |movie_title, file_name|
+    movie = Movie.find_by!(name: movie_title)
+    file = File.open(Rails.root.join("app/assets/images/#{file_name}"))
+    movie.main_image.attach(io: file, filename: file_name)
+
+end
 
 # Movie.create!([
 #   {
